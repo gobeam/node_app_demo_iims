@@ -1,0 +1,20 @@
+{
+  "name": "node_app",
+  "version": "1.0.0",
+  "description": "node demo project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gobeam/node_app_demo_iims.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gobeam/node_app_demo_iims/issues"
+  },
+  "homepage": "https://github.com/gobeam/node_app_demo_iims#readme"
+}
