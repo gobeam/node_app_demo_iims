@@ -8,7 +8,7 @@ let server = http.createServer((request, response) => {
 		response.end();
 	} else if(request.url === '/profile') {
 		response.writeHead(200, {'content-type' : 'text/html'});
-		response.write('<html><body><h1>Hello IIMS</h1><p>This is profile page</p></body></html>');
+		response.write('<html><body><h1>Hello IIMS, how are you????</h1><p>This is profile page</p></body></html>');
 		response.end();
 	} else {
 		response.writeHead(404, {'content-type': 'text/html'});
