@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/gobeam/node_app_demo_iims/issues"
   },
-  "homepage": "https://github.com/gobeam/node_app_demo_iims#readme"
+  "homepage": "https://github.com/gobeam/node_app_demo_iims#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
