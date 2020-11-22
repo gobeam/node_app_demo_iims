@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const app = require('./index.js');
 
-const port = 8000;
+// mongoose.Promise = global.Promise;
 
 (async () => {
 	try{
@@ -12,12 +11,7 @@ const port = 8000;
 	}
 })();
 
-app.listen(port, () => {
-	console.log(`Application is running on port: ${port}`);
-})
-
-
-
-
+require('./model/user.js');
+require('./index.js');
 
 

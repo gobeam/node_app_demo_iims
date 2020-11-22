@@ -1,18 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
 
 const app = express();
-
+const port = 8000;
 let blogs = []; //{id:1, title: ''}
 
 
 app.use(bodyParser.json());
 
 
-// query all stored blogs
-app.get('/blog',(req, resp) => {
-	resp.json(blogs);
+// query all stored users
+app.get('/user', async (req, resp) => {
+	let users = await User.find({});
+	resp.json({data: users});
 });
 
 // store a blog
@@ -72,6 +75,8 @@ app.delete('/blog/:id', (req, res) => {
 	res.status(204).json({});
 })
 
-
+app.listen(port, () => {
+	console.log(`Application is running on port: ${port}`);
+})
 
 module.exports =app
