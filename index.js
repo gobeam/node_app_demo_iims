@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 
 
 const app = express();
-const port = 8000;
 
 let blogs = []; //{id:1, title: ''}
 
@@ -73,6 +72,6 @@ app.delete('/blog/:id', (req, res) => {
 	res.status(204).json({});
 })
 
-app.listen(port, () => {
-	console.log(`Application is running on port: ${port}`);
-})
+
+
+module.exports =app
