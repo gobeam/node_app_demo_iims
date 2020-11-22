@@ -19,15 +19,19 @@ app.get('/user', async (req, resp) => {
 });
 
 // store a blog
-app.post('/blog',(req, res) => {
-	// let {title} = req.body;
-	let title = req.body.title;
-	let data = {
-		id: blogs.length + 1,
-		title: title
-	}
-	blogs.push(data)
-	res.json(data);
+app.post('/user', async (req, res) => {
+	let {firstName, lastName, address, phone, age} = req.body;
+	let user = new User();
+	user.firstName = firstName;
+	user.lastName = lastName;
+	user.address = address;
+	user.phone = phone;
+	user.age = age;
+	user.status = true;
+	user.createdAt = Date.now();
+	await user.save();
+
+	res.json({data: user});
 });
 
 // Update a blog by id
