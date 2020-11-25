@@ -9,6 +9,7 @@ let blogs = []; //{id:1, title: ''}
 
 
 app.use(bodyParser.json());
+app.set('view engine','ejs');
 
 app.use((req, resp, next)=> {
 	console.log('this is middleware example');
