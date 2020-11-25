@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./routes/index.js');
+const apiRoutes = require('./routes/index.js');
+const webRoutes = require('./routes/web.js');
 
 
 const app = express();
@@ -15,7 +16,8 @@ app.use((req, resp, next)=> {
 	console.log('this is middleware example');
 	next();
 })
-app.use('/', routes);
+app.use('/api', apiRoutes);
+app.use('/', webRoutes);
 
 
 app.listen(port, () => {
