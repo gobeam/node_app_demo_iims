@@ -18,20 +18,42 @@
 	<div class="row">
 		<div class="col-md-12">
 
-<!--			nav-->
+<!--			nav start -->
 			<%- include('../partials/header') %>
+<!--			nav end-->
+<h1>User List</h1>
 
-			<div class="jumbotron">
-				<h2>
-					Hello, world!
-				</h2>
-				<p>
-					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-				</p>
-				<p>
-					<a class="btn btn-primary btn-large" href="#">Learn more</a>
-				</p>
-			</div>
+
+
+			<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Address</th>
+      <th> Phone</th>
+      <th>Age</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+  	
+  	<% users.forEach(user => { %>
+    <tr>
+      <th scope="row"> <%= user.firstName %> </th>
+      <td><%= user.lastName %></td>
+      <td><%= user.address %></td>
+      <td><%= user.phone %></td>
+      <td><%= user.age %></td>
+      <td><%= user.createdAt %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+
+
+
 		</div>
 	</div>
 </div>
