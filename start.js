@@ -12,6 +12,7 @@ const mongoose = require('mongoose');
 })();
 
 require('./model/user.js');
+require('./model/Product.js');
 require('./index.js');
 
 
