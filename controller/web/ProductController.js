@@ -13,6 +13,16 @@ exports.create = async (req, res) => {
 }
 
 // store product
+exports.store = async(req, res) => {
+ let {name, status, price} = req.body;
+ let product = new Product();
+ product.name = name;
+ product.price = price;
+ product.status = status;
+ product.createdAt = Date.now();
+ await product.save();
+ res.redirect('/product');
+}
 
 
 
