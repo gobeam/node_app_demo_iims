@@ -8,10 +8,9 @@ const {catchError} =require('../handler/ErrorHandler');
 
 
 router.get('/', userController.index);
-
 router.get('/product', productController.index);
 router.get('/product/create', productController.create);
-router.post('/product',[productValidator], catchError(productController.store));
+router.post('/product', [productValidator], catchError(productController.store));
 
 
 module.exports = router;
