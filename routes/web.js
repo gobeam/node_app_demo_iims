@@ -11,6 +11,9 @@ router.get('/', userController.index);
 router.get('/product', productController.index);
 router.get('/product/create', productController.create);
 router.post('/product', [productValidator], catchError(productController.store));
+router.get('/product/:id/edit', catchError(productController.edit));
+router.put('/product/:id', [productValidator], catchError(productController.update));
+router.delete('/product/:id',  catchError(productController.destroy));
 
 
 module.exports = router;

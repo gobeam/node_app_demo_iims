@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 
 const app = express();
 const port = process.env.PORT;
@@ -27,13 +28,16 @@ app.use(session({
 		mongooseConnection: mongoose.connection
 	})
 }))
+
+app.use(methodOverride('_method'))
+
+
 app.use(flash());
 app.use((req, res, next) => {
-	res.locals.inputOld = req.flash('oldInput')[0] || {};
+	res.locals.oldInput = req.flash('oldInput')[0] || {};
 	res.locals.errors = req.flash('errors')[0] || {};
+	res.locals.alerts = req.flash('alerts')[0] || {};
 	res.locals.flashes = req.flash();
-	// res.locals.auth = req.user || null;
-	// res.locals.currentPath = req.path;
 	next();
 });
 app.use('/api', apiRoutes);

@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "express-validator": "^6.7.0",
+    "method-override": "^3.0.0",
     "mongoose": "^5.10.13"
   }
 }

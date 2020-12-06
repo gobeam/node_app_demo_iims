@@ -1,42 +1,54 @@
 <%- include('../partials/html_header') %>
 
 <!--			nav start -->
-			<%- include('../partials/header') %>
+<%- include('../partials/header') %>
 <!--			nav end-->
 <h1>Product List</h1>
 <a href="/product/create" class="btn btn-primary">Add Product</a>
 
+<%- include('../partials/alert') %>
 
 
-			<table class="table">
-  <thead>
+<table class="table">
+    <thead>
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Status</th>
-      <th>Created</th>
-      <th>Updated</th>
-      <th>Action</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th>Action</th>
     </tr>
-  </thead>
-  <tbody>
-  	
-  	<% products.forEach(product => { %>
-    <tr>
-      <th scope="row"> <%= product.name %> </th>
-      <td><%= product.price %></td>
-      <td><%= product.status %></td>
-      <td><%= product.createdAt %></td>
-      <td><%= product.updatedAt %></td>
-      <td>
-        <button type="button" class="btn btn-warning">Edit</button>
-        <button type="button" class="btn btn-danger">Delete</button>
-      </td>
-    </tr>
-    <% }) %>
-  </tbody>
+    </thead>
+    <tbody>
+    <% if(products.length < 1) { %>
+        <tr>
+            <td colspan="6" style="text-align: center">No Data</td>
+        </tr>
+    <% } %>
+
+    <% products.forEach(product => { %>
+        <tr>
+            <th scope="row"> <%= product.name ;%> </th>
+            <td><%= product.price ;%></td>
+            <td>
+                <% if(product.status){ %>
+                    <span class="badge badge-pill badge-success">Active</span>
+                <% } else { %>
+                    <span class="badge badge-pill badge-danger">Inactive</span>
+                <% } %>
+            <td><%= product.createdAt ;%></td>
+            <td><%= product.updatedAt ;%></td>
+            <td>
+                <a href="/product/<%= product._id ;%>/edit" class="btn btn-warning">Edit</a>
+                <form method="post" action="/product/<%= product._id ;%>?_method=delete">
+                    <button type="submit" class="btn btn-danger" id="delete-data">Delete</button>
+                </form>
+            </td>
+        </tr>
+    <% }); %>
+    </tbody>
 </table>
-
 
 
 <%- include('../partials/html_footer') %>

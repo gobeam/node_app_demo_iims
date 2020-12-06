@@ -9,20 +9,28 @@
 			<form method="post" action="/product">
   <div class="form-group">
     <label for="exampleInputProduct">Product Name</label>
-    <input type="text" name="name" class="form-control" id="exampleInputProduct" aria-describedby="emailHelp" placeholder="Enter product name">
-     <small id="emailHelp" class="form-text text-muted"><%= errors.name %></small>
+    <input type="text" name="name" class="form-control" id="exampleInputProduct" aria-describedby="emailHelp" placeholder="Enter product name" value="<%=oldInput.name%>">
+     <small id="emailHelp" class="form-text text-danger"><%= errors.name %></small>
   </div>
 
   <div class="form-group">
     <label for="price">Product Price</label>
-    <input type="number" name="price" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Enter product price">
-     <small id="emailHelp" class="form-text text-muted"><%= errors.price %></small>
+    <input type="number" name="price" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Enter product price" value="<%=oldInput.price%>">
+     <small id="emailHelp" class="form-text text-danger"><%= errors.price %></small>
   </div>
               <div class="form-group">
                 <label for="price">Product status</label>
-                <input type="radio" name="status" value="true"> Active
-                <input type="radio" name="status" value="false"> Inactive
-                  <small id="emailHelp" class="form-text text-muted"><%= errors.status %></small>
+                <input type="radio" name="status" value="true"
+                <%if(oldInput.status === 'true'){%>
+                        <%= 'checked'%>
+                        <%}%>
+                > Active
+                <input type="radio" name="status" value="false"
+                        <%if(!oldInput.status === 'false'){%>
+                        <%= 'checked'%>
+                        <%}%>
+                > Inactive
+                  <small id="emailHelp" class="form-text text-danger"><%= errors.status %></small>
               </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
