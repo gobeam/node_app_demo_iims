@@ -3,6 +3,8 @@ const router = express.Router();
 const userController = require('../controller/web/UserController');
 const productController = require('../controller/web/ProductController');
 const productValidator = require('../validator/ProductValidator');
+const userValidator = require('../validator/UserValidator');
+const authController = require('../controller/web/AuthController');
 const {catchError} =require('../handler/ErrorHandler');
 
 
@@ -14,6 +16,9 @@ router.post('/product', [productValidator], catchError(productController.store))
 router.get('/product/:id/edit', catchError(productController.edit));
 router.put('/product/:id', [productValidator], catchError(productController.update));
 router.delete('/product/:id',  catchError(productController.destroy));
+
+router.get('/register', authController.registerView);
+router.post('/register', [userValidator], catchError(authController.register));
 
 
 module.exports = router;

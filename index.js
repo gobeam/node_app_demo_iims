@@ -9,6 +9,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const passport = require('passport');
+require('./handler/passport');
 
 const app = express();
 const port = process.env.PORT;
@@ -16,8 +18,9 @@ const port = process.env.PORT;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+//;setup view engine
 app.set('view engine','ejs');
+
 app.use(cookieParser());
 app.use(session({
 	secret: process.env.SECRET,
@@ -29,7 +32,12 @@ app.use(session({
 	})
 }))
 
+// Method override for forms
 app.use(methodOverride('_method'))
+
+// passport initialization
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use(flash());
