@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 
+
+
+// index
+
 // View all Products
 exports.index = async (req, res) => {
-    let products = await Product.find();
+    let products = await Product.find({user: req.user._id});
     res.render('system/product', {products});
 };
 
@@ -32,8 +36,6 @@ exports.update = async (req, res) => {
             type: 'success',
             message: 'Product successfully updated!'
         });
-
-
     }
     res.redirect('/product');
 };
@@ -42,6 +44,7 @@ exports.update = async (req, res) => {
 exports.store = async (req, res) => {
     let {name, status, price} = req.body;
     let product = new Product();
+    product.user = req.user._id;
     product.name = name;
     product.price = price;
     product.status = status;

@@ -46,6 +46,7 @@ app.use((req, res, next) => {
 	res.locals.errors = req.flash('errors')[0] || {};
 	res.locals.alerts = req.flash('alerts')[0] || {};
 	res.locals.flashes = req.flash();
+	res.locals.auth = req.user || null;
 	next();
 });
 app.use('/api', apiRoutes);

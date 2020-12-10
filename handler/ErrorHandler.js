@@ -20,10 +20,17 @@ exports.catchError = (fn) => {
 }
 
 exports.flashValidationError = (err, req, res, next) => {
-    console.log(err);
-    console.log('validation method', validationResult(req))
-    // const errors = validationResult(req);
-    // console.log(errors);
+    let validationError = validationResult(req);
+    if(validationError.errors && validationError.errors.length > 0) {
+        let validateMsg = {};
+        for(const validationObj of validationError.errors) {
+            validateMsg[validationObj.param] =validationObj.msg;
+        }
+        req.flash('errors',validateMsg);
+        req.flash('oldInput', req.body);
+        res.redirect('back');
+        return
+    }
     next();
 
 
