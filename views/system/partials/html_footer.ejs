@@ -11,16 +11,34 @@
     </footer>
 
 <script>
-    $(document).ready(() => {
-        let button = $('#delete-data');
-        // button.click((e) => {
-        //     e.preventDefault();
-        //     // $('#delete-modal-confirmation').modal('show');
-        //
-        //
-        // })
-
-    })
+	$(document).ready(function() {
+		confirmDelete.init();
+	})
+	const confirmDelete = (function () {
+		const $modal = $('#delete-confirm-modal');
+		const $deleteBtn = $('.btn-delete');
+		const $deleteForm = $modal.find('form');
+		const init = () => {
+			attachEventListeners()
+		};
+		const attachEventListeners = () => {
+			$deleteBtn.on('click', handleDeleteBtnClick);
+			$modal.on('hidden.bs.modal', handleModalHidden)
+		};
+		const handleDeleteBtnClick = function () {
+			const url = $(this).data('href');
+			setDeleteUrl(`${url}?_method=DELETE`)
+		};
+		const handleModalHidden = function () {
+			setDeleteUrl('')
+		};
+		const setDeleteUrl = url => {
+			$deleteForm.attr('action', url)
+		};
+		return {
+			init,
+		}
+	})();
 
 </script>
   </body>

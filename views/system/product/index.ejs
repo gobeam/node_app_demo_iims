@@ -41,19 +41,18 @@
             <td><%= product.updatedAt ;%></td>
             <td>
                 <a href="/product/<%= product._id ;%>/edit" class="btn btn-warning">Edit</a>
-                <form method="post" action="/product/<%= product._id ;%>?_method=delete">
-                    <button type="submit" class="btn btn-danger" id="delete-data">Delete</button>
-                </form>
+                <button type="button" class="btn btn-danger btn-delete" data-toggle="modal" data-target="#delete-confirm-modal" data-href="/product/<%= product._id ;%>">
+                    Delete
+                </button>
             </td>
         </tr>
     <% }); %>
     </tbody>
 </table>
 
-
+<%- include('../partials/delete_modal') %>
 <%- include('../partials/html_footer') %>
 
 
 
 
-		
